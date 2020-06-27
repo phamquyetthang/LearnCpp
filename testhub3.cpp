@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 struct Point 
 {
@@ -49,20 +50,22 @@ Triangle::Triangle(const Point& p1_, const Point& p2_, const Point& p3_)
 double Triangle::getPerimeter() const
 {
     // Your code here
-    
-    return 0; // Change this line
+    double a, b, c;
+    a = sqrt((p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y));
+    b = sqrt((p1.x - p3.x)*(p1.x - p3.x) + (p1.y - p3.y)*(p1.y - p3.y));
+    c = sqrt((p3.x - p2.x)*(p3.x - p2.x) + (p3.y - p2.y)*(p3.y - p2.y));
+    return a+b+c; // Change this line
 }
 
 double Triangle::getArea() const
 {
     // Your code here
-    return 0; // Change this line
+    double s = 0.5 * abs(((p2.x - p1.x)*(p3.y - p1.y)) - ((p3.x - p1.x)*(p2.y - p1.y)));
+    return s; // Change this line
 }
 int main(){
-    Point p;
-    cout << p.x << " " << p.y;
     Point A(1,1), B(1, 4), C(5, 1);
-    Triangle tri(A, B, C);
-    cout << tri.getPerimeter() << endl;
+Triangle tri(A, B, C);
+cout << tri.getArea() << endl;
     return 0;
 }
